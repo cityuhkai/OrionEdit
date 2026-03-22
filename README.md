@@ -1,9 +1,11 @@
-
-<h1 align="center"> OrionEdit:<br>Bridging Reference and Source Images for Generalized Cross-Image Editing </h1>
+<h1 align="center">
+  <img src="assets/logo.png" width="40" style="vertical-align: middle; margin-right: 8px;">
+  OrionEdit: Bridging Reference and Source Images for Generalized Cross-Image Editing
+</h1>
 
 <p align="center">
     <a href="https://arxiv.org">
-            <img alt="Build" src="https://img.shields.io/badge/arXiv%20paper-2506.21416-b31b1b.svg">
+            <img alt="Build" src="https://img.shields.io/">
     </a>
     <a href="https://bytedance.github">
         <img alt="Project Page" src="https://img.shields.io/badge/Project-Page-blue">
@@ -16,7 +18,10 @@
     </a>    
 </p>
 
-![The teaser figure of OrionEdit.](asserts/teaser.png)
+![The teaser figure of OrionEdit.](assets/teaser.png)
 
+## Introduction
 
+We propose OrionEdit, a unified framework that regulates editing via symmetric orthogonal subspace disentanglement and reverse-causal attention with information-flow masks enforcing unidirectional latent dependencies.
+Built on standard diffusion backbones, OrionEdit enables zero-shot multi-reference editing and outperforms open-source baselines, approaching proprietary models in fidelity and disentanglement.
 
