@@ -52,5 +52,6 @@ If OrionEdit inspires your research 🤔, please consider giving this repo a ⭐
 
 ```bibtex
 @article{
-> Our paper has been accepted to CVPR 2026 main track. The official citation will be released upon publication.
+> Our paper has been accepted to CVPR 2026 main track. 
+The official citation will be released upon publication.
 }
