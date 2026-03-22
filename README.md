@@ -20,8 +20,12 @@
 
 ![The teaser figure of OrionEdit.](assets/teaser.png)
 
-## Introduction
+## 📖 Introduction
+We present OrionEdit, a unified framework for cross-image editing that combines symmetric orthogonal subspace disentanglement with reverse-causal attention, where information-flow masks enforce unidirectional dependencies in the latent space.
 
-We propose OrionEdit, a unified framework that regulates editing via symmetric orthogonal subspace disentanglement and reverse-causal attention with information-flow masks enforcing unidirectional latent dependencies.
-Built on standard diffusion backbones, OrionEdit enables zero-shot multi-reference editing and outperforms open-source baselines, approaching proprietary models in fidelity and disentanglement.
+OrionEdit is deployed on standard diffusion backbones and supports zero-shot multi-reference editing, while outperforming open-source baselines in fidelity and compositional consistency.
 
+
+
+
+OrionEdit is licensed under Apache 2.0.
