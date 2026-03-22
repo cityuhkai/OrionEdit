@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="assets/logo.png" width="40" style="vertical-align: middle; margin-right: 8px;">
+  <img src="assets/logo.png" width="60" style="vertical-align: middle; margin-right: 8px;">
   OrionEdit: Bridging Reference and Source Images for Generalized Cross-Image Editing
 </h1>
 
