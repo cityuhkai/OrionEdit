@@ -7,7 +7,7 @@
     <a href="https://github.com/cityuhkai/OrionEdit">
         <img alt="Paper" src="https://img.shields.io/badge/Paper-Coming%20Soon-lightgrey">
     </a>
-    <a href="https://bytedance.github">
+    <a href="https://cityuhkai.github.io/OrionEdit/">
         <img alt="Project Page" src="https://img.shields.io/badge/Project-Page-blue">
     </a>
     <a href="https://huggingface.co/">
