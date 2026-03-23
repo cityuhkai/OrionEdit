@@ -33,8 +33,25 @@ OrionEdit is deployed on standard diffusion backbones and supports zero-shot mul
 
 ## 🚀 Quick Start
 
+Requirements and Installation
+First, install the necessary dependencies:
 
 
+## 🗂️ OrionEditBench
+## 🗂️ OrionEditBench
+
+To support research on cross-image editing, we construct a dataset based on **reference–source–synthesis triplets**. 
+Given the lack of large-scale datasets in this format, our data is built from a combination of partially public sources 
+(e.g., Subjects200K, ShareGPT-4o-Image, OmniContext, DeepFashion) and curated synthetic pairs generated using Nano-banana and GPT-4o.
+
+The released dataset covers diverse editing scenarios, with a particular emphasis on **visual attribute transfer**, 
+as well as fusion-based generation and style alignment tasks.
+
+We release a **subset of the OrionEdit dataset** to facilitate training, ablation studies, and qualitative evaluation.  
+The full benchmark (including evaluation splits and protocols) is not publicly available to ensure fair and consistent comparison.
+
+The dataset is hosted on Hugging Face:
+👉 https://huggingface.co/datasets
 
 
 ## 🤗 Disclaimer
