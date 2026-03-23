@@ -37,21 +37,16 @@ Requirements and Installation
 First, install the necessary dependencies:
 
 
+
+
+
 ## 🗂️ OrionEditBench
-## 🗂️ OrionEditBench
 
-To support research on cross-image editing, we construct a dataset based on **reference–source–synthesis triplets**. 
-Given the lack of large-scale datasets in this format, our data is built from a combination of partially public sources 
-(e.g., Subjects200K, ShareGPT-4o-Image, OmniContext, DeepFashion) and curated synthetic pairs generated using Nano-banana and GPT-4o.
+We construct a dataset based on **reference–source–synthesis triplets** to support cross-image editing. Due to the lack of large-scale data in this format, our collection combines samples adapted from existing public datasets (e.g., Subjects200K, ShareGPT-4o-Image, OmniContext, DeepFashion) with a substantial portion of curated synthetic pairs generated using Nano-banana and GPT-4o.
 
-The released dataset covers diverse editing scenarios, with a particular emphasis on **visual attribute transfer**, 
-as well as fusion-based generation and style alignment tasks.
-
-We release a **subset of the OrionEdit dataset** to facilitate training, ablation studies, and qualitative evaluation.  
-The full benchmark (including evaluation splits and protocols) is not publicly available to ensure fair and consistent comparison.
-
-The dataset is hosted on Hugging Face:
-👉 https://huggingface.co/datasets
+The released subset covers diverse editing scenarios, with a focus on **visual attribute transfer**, along with fusion-based generation and style alignment.
+We release part of the dataset for training and analysis, the dataset is hosted on Hugging Face, click 👉 [here](https://huggingface.co/datasets)
+(will be released later)
 
 
 ## 🤗 Disclaimer
