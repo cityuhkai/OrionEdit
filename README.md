@@ -24,11 +24,15 @@
 
 
 
+
+
 ## 📖 Introduction
 
 We present OrionEdit, a unified framework for cross-image editing that combines symmetric orthogonal subspace disentanglement with reverse-causal attention, where information-flow masks enforce unidirectional dependencies in the latent space.
 
 OrionEdit is deployed on standard diffusion backbones and supports zero-shot multi-reference editing, while outperforming open-source baselines in fidelity and compositional consistency.
+
+
 
 
 ## 🚀 Quick Start
@@ -37,6 +41,7 @@ Requirements and Installation
 First, install the necessary dependencies:
 
 
+## Inference
 
 
 
@@ -49,6 +54,9 @@ We construct a dataset based on **reference–source–synthesis triplets** to s
 The released subset covers diverse editing scenarios, with a focus on **visual attribute transfer**, along with fusion-based generation and style alignment.
 We release part of the dataset for training and analysis, the dataset is hosted on Hugging Face, click 👉 [here](https://huggingface.co/datasets)
 (will be released later)
+
+
+
 
 
 ## 🤗 Disclaimer
