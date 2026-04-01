@@ -98,32 +98,88 @@
       text-decoration: underline;
     }
     .authors {
-  text-align: center;
-  margin-top: 6px;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-.affiliations {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 18px;
-}
-.sup {
-  vertical-align: super;
-  font-size: 0.75em;
-}
-.methodology {
-  text-align: center;
-  margin: 24px 0 36px;
-}
+      text-align: center;
+      margin-top: 6px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .affiliations {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 18px;
+    }
+    .sup {
+      vertical-align: super;
+      font-size: 0.75em;
+    }
+    .methodology {
+      text-align: center;
+      margin: 24px 0 36px;
+    }
 
-.methodology img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
+    .methodology img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin: 20px 0 36px;
+    }
+
+    .method-card {
+      background: #f4f7fb;
+      border: 1px solid #e3ebf5;
+      border-radius: 14px;
+      padding: 20px 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .method-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+      color: #2f63c6;
+    }
+
+    .method-card ul {
+      margin: 0 0 14px 0;
+      padding-left: 20px;
+    }
+
+    .method-card li {
+      margin-bottom: 8px;
+    }
+
+    .method-box {
+      background: #eaf1f8;
+      border-left: 4px solid #2f63c6;
+      padding: 12px 14px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-size: 0.96rem;
+    }
+
+    .method-box code {
+      font-size: 0.95rem;
+      white-space: normal;
+    }
+
+    .method-caption {
+      color: #555;
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -207,7 +263,72 @@
       <img src="assets/methodology.png" alt="The methodology figure of OrionEdit.">
     </div>
 
+    <h2>🔍 Method Overview</h2>
+    <p>
+      OrionEdit is built on two complementary designs: <strong>branch-specific orthogonal subspaces</strong>
+      for disentangling multiple visual streams, and a <strong>reverse-causal attention mask</strong>
+      for regulating how information flows from references to the final synthesis image.
+    </p>
 
+    <div class="method-grid">
+      <div class="method-card">
+        <h3>1. Symmetric Orthogonal Subspace Update</h3>
+        <ul>
+          <li>Assigns each latent branch its own orthogonal basis, enabling <strong>branch-specific adaptation</strong>.</li>
+          <li>Uses a symmetric low-rank update to project features into a branch subspace and reconstruct them back.</li>
+          <li>Keeps the orthogonal bases frozen, while learning only the compact latent adapter for each branch.</li>
+        </ul>
+        <div class="method-box">
+          <code>ΔW<sup>(i)</sup> = A<sup>(i)</sup> B<sup>(i)</sup> (A<sup>(i)</sup>)<sup>⊤</sup></code>
+        </div>
+        <div class="method-caption">
+          Here, <code>A<sup>(i)</sup></code> defines the fixed orthogonal subspace of branch <em>i</em>,
+          while <code>B<sup>(i)</sup></code> captures its trainable incremental update.
+        </div>
+      </div>
+
+      <div class="method-card">
+        <h3>2. Orthogonality Guarantee</h3>
+        <ul>
+          <li>Different branch updates are mutually orthogonal in the Frobenius inner-product sense.</li>
+          <li>This reduces <strong>feature entanglement</strong> across synthesis, source, and reference streams.</li>
+          <li>High-level editing semantics are separated across branches, while the shared backbone still preserves low-level texture and structure.</li>
+        </ul>
+        <div class="method-box">
+          <code>&lt;ΔW<sub>u</sub>, ΔW<sub>v</sub>&gt;<sub>F</sub> = 0 &nbsp;&nbsp; (u ≠ v)</code>
+        </div>
+        <div class="method-caption">
+          In practice, this means different image branches can specialize in distinct editing roles without corrupting one another.
+        </div>
+      </div>
+
+      <div class="method-card">
+        <h3>3. Reverse-Causal Attention Mask</h3>
+        <ul>
+          <li>Concatenates all branch tokens inside the Orion Transformer block.</li>
+          <li>Applies a <strong>strictly upper block-triangular mask</strong> to control cross-branch attention.</li>
+          <li>Earlier groups can only read from the same group or later groups, enforcing directional dependency.</li>
+        </ul>
+        <div class="method-box">
+          <code>reference → source → synthesis</code>
+        </div>
+        <div class="method-caption">
+          This design ensures that reference attributes guide the source branch and finally shape the synthesis stream in a controlled manner.
+        </div>
+      </div>
+
+      <div class="method-card">
+        <h3>4. Controlled Information Flow</h3>
+        <ul>
+          <li><strong>Synthesis tokens</strong> can read from source and reference tokens, but cannot write back.</li>
+          <li><strong>Source tokens</strong> can read from references, but cannot access synthesis or text tokens.</li>
+          <li><strong>Reference branches</strong> remain read-only with respect to one another, preventing contamination.</li>
+        </ul>
+        <div class="method-box">
+          <strong>Effect:</strong> more faithful attribute transfer, cleaner disentanglement, and stronger multi-reference consistency.
+        </div>
+      </div>
+    </div>
 
 
 
