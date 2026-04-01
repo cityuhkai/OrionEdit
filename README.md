@@ -59,9 +59,7 @@ To reduce training overhead, some of multiple reference images are pre-composed 
 
 ## 🤗 Disclaimer
 
-This repository is built upon [Qwen-Image](https://github.com/QwenLM/Qwen-Image) and is released under the Apache 2.0 License, we thank [Magiclight.AI](https://magiclight.ai) for their support.
-
-This project is intended for academic research and the AIGC community. Most images are AI-generated or from public datasets. For any concerns, please contact us; we will promptly review and remove inappropriate content.
+This repository is built upon [Qwen-Image](https://github.com/QwenLM/Qwen-Image) and is released under the Apache 2.0 License, we thank [Magiclight.AI](https://magiclight.ai) for their support. This project is intended for academic research and the AIGC community. Most images are AI-generated or from public datasets. For any concerns, please contact us; we will promptly review and remove inappropriate content.
 
 
 
