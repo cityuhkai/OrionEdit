@@ -127,9 +127,9 @@
 
     <div class="authors">
       Zeyu Jiang<span class="sup">1</span>,
-      Lai Man Po<span class="sup">1*</span>,
+      Lai Man Po<span class="sup">1</span>,
       Xuyuan Xu<span class="sup">2</span>,
-      Yexin Wang<span class="sup">2</span>,
+      Yexin Wang<span class="sup">2†</span>,
       Guoping Gong<span class="sup">2</span>,
       Haoxuan Wu<span class="sup">1</span>,
       Chenbo Yan<span class="sup">1</span>,
@@ -139,7 +139,8 @@
 
     <div class="affiliations">
       <span class="sup">1</span> City University of Hong Kong &nbsp;&nbsp;
-      <span class="sup">2</span> Magiclight.AI
+      <span class="sup">2</span> Magiclight.AI <br>
+      <span class="sup">†</span> Project Leader
     </div>
 
     <div class="badges">
@@ -161,21 +162,42 @@
       <img src="assets/teaser.png" alt="The teaser figure of OrionEdit.">
     </div>
 
-    <h2>🔥 News</h2>
+
+    <h2>📝 Abstract</h2>
+    <p>
+      Multimodal image synthesis has achieved remarkable progress in producing visually coherent results, yet most editing methods still rely on semantic instructions, which is less direct than using visual guidance.
+      Recently, a new paradigm has emerged that focuses on ``editing one image from another'', enabling more direct and interpretable manipulation through reference exemplars.
+      In this work, we formalize this paradigm as cross-image editing, which modifies a source image under the guidance of one or more references, encompassing subject replacement, style transfer, image completion, and other reference-to-source tasks.
+    </p>
+
+    <p>
+      To address this, we introduce OrionEdit, a unified framework that regulates visual attribute transfer through two key mechanisms:
+    </p>
+
     <ul>
-      <li><strong>2026.3.22</strong>: The repo has been released!</li>
+      <li>
+        <strong>Symmetric Orthogonal Subspace Update:</strong>
+        partitions image features into branch-specific subspaces, mitigating feature entanglement and preserving subject identity.
+      </li>
+      <li>
+        <strong>Reverse-Causal Attention with Information-Flow Mask:</strong>
+        enforces unidirectional dependencies in the latent space to stabilize cross-image conditioning.
+      </li>
     </ul>
 
-    <h2>📖 Introduction</h2>
     <p>
-      We present OrionEdit, a unified framework for cross-image editing that combines symmetric orthogonal
-      subspace disentanglement with reverse-causal attention, where information-flow masks enforce
-      unidirectional dependencies in the latent space.
+      Built on standard diffusion backbones, OrionEdit enables zero-shot editing with multiple references and yields consistent gains over open-source baselines, rivaling proprietary models in fidelity and disentanglement.
     </p>
-    <p>
-      OrionEdit is deployed on standard diffusion backbones and supports zero-shot multi-reference editing,
-      while outperforming open-source baselines in fidelity and compositional consistency.
-    </p>
+
+
+
+
+
+
+
+
+
+
 
     <h2>🚀 Quick Start</h2>
     <p class="note">Code and usage instructions will be updated soon.</p>
