@@ -27,46 +27,23 @@
       margin-bottom: 16px;
     }
 
-    .title-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .title-row img {
-      width: 60px;
-      height: auto;
-    }
-
-    .badges {
-      text-align: center;
-      margin: 20px 0 28px;
-    }
-
-    .badges a {
-      display: inline-block;
-      margin: 4px 6px;
-    }
-
-    .teaser {
-      text-align: center;
-      margin: 24px 0 36px;
-    }
-
-    .teaser img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
     h2 {
       font-size: 1.4rem;
-      margin-top: 36px;
+      margin-top: 40px;
       margin-bottom: 12px;
       border-bottom: 1px solid #e5e5e5;
       padding-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 14px;
     }
 
     ul {
@@ -85,10 +62,6 @@
       font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     }
 
-    .note {
-      color: #666;
-    }
-
     a {
       color: #0366d6;
       text-decoration: none;
@@ -97,6 +70,24 @@
     a:hover {
       text-decoration: underline;
     }
+
+    .note {
+      color: #666;
+    }
+
+    .title-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .title-row img {
+      width: 60px;
+      height: auto;
+    }
+
     .authors {
       text-align: center;
       margin-top: 6px;
@@ -104,47 +95,67 @@
       font-size: 0.95rem;
       line-height: 1.5;
     }
+
     .affiliations {
       text-align: center;
       font-size: 0.9rem;
       color: #555;
       margin-bottom: 18px;
     }
+
     .sup {
       vertical-align: super;
       font-size: 0.75em;
     }
-    .methodology {
+
+    .badges {
+      text-align: center;
+      margin: 20px 0 28px;
+    }
+
+    .badges a {
+      display: inline-block;
+      margin: 4px 6px;
+    }
+
+    .teaser,
+    .methodology,
+    .benchmark-preview,
+    .result-figure {
       text-align: center;
       margin: 24px 0 36px;
     }
 
-    .methodology img {
+    .teaser img,
+    .methodology img,
+    .benchmark-preview img,
+    .result-figure img {
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 10px;
     }
+
     .method-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
-      margin: 20px 0 36px;
+      margin: 20px 0 24px;
     }
 
     .method-card {
-      background: #2b2b2b;          /* 深灰背景 */
-      border: 1px solid #3a3a3a;    /* 低对比边框 */
+      background: #2b2b2b;
+      border: 1px solid #3a3a3a;
       border-radius: 14px;
       padding: 20px 18px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      color: #f5f5f5;               /* 默认文字白色 */
+      color: #f5f5f5;
     }
 
     .method-card h3 {
       margin-top: 0;
       margin-bottom: 12px;
       font-size: 1.2rem;
-      color: #ffffff;              /* 改成白色 */
+      color: #ffffff;
     }
 
     .method-card ul {
@@ -157,8 +168,8 @@
     }
 
     .method-box {
-      background: #1f1f1f;         /* 更深一层灰 */
-      border-left: 4px solid #666; /* 灰色强调条 */
+      background: #1f1f1f;
+      border-left: 4px solid #666;
       padding: 12px 14px;
       border-radius: 6px;
       margin-top: 10px;
@@ -178,23 +189,234 @@
       margin-top: 10px;
     }
 
-    @media (max-width: 800px) {
-      .method-grid {
+    .method-bridge {
+      margin: 0 0 34px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: #f6f7f9;
+      border: 1px solid #e5e7eb;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    .method-bridge h3 {
+      margin-top: 0;
+    }
+
+    .method-bridge img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      background: #fff;
+    }
+
+    .figure-caption {
+      color: #666;
+      font-size: 0.92rem;
+      margin-top: 10px;
+    }
+
+    .results-intro {
+      margin-bottom: 10px;
+    }
+
+    .result-block {
+      margin-bottom: 30px;
+    }
+
+    .result-card {
+      background: #f8f9fb;
+      border: 1px solid #e8ebf0;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 18px 0 30px;
+    }
+
+    .gallery-note {
+      color: #666;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+    }
+
+    .gallery {
+      position: relative;
+      margin: 18px 0 34px;
+      border: 1px solid #e7e7e7;
+      border-radius: 14px;
+      background: #fafafa;
+      overflow: hidden;
+    }
+
+    .gallery-stage {
+      position: relative;
+      min-height: 420px;
+    }
+
+    .gallery-slide {
+      display: none;
+      padding: 18px 18px 14px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .gallery-slide.active {
+      display: block;
+    }
+
+    .gallery-slide h4 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+
+    .gallery-slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      background: #fff;
+    }
+
+    .gallery-slide p {
+      margin: 10px 0 0;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .gallery-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px 16px;
+      border-top: 1px solid #ececec;
+      background: #fff;
+    }
+
+    .gallery-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .gallery-btn {
+      border: 1px solid #d7d7d7;
+      background: #fff;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .gallery-btn:hover {
+      background: #f1f1f1;
+    }
+
+    .gallery-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .gallery-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 0;
+      background: #d0d0d0;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .gallery-dot.active {
+      background: #555;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0.35;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .method-bridge {
         grid-template-columns: 1fr;
       }
     }
 
-    .benchmark-preview {
-      text-align: center;
-      margin: 20px 0 36px;
+    @media (max-width: 800px) {
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-stage {
+        min-height: auto;
+      }
     }
 
-    .benchmark-preview img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
+    @media (max-width: 640px) {
+      .gallery-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .gallery-dots {
+        justify-content: center;
+      }
     }
 
+    .acceptance {
+      margin-top: 14px;
+      display: block;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 6px 16px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: #6e6e6e;
+
+      border-radius: 6px;
+    }
+
+    .citation-card {
+      background: #2b2b2b;
+      border: 1px solid #3a3a3a;
+      border-radius: 14px;
+      padding: 20px 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      color: #f5f5f5;
+      margin: 18px 0 0;
+    }
+
+    .citation-card p {
+      margin-top: 0;
+      margin-bottom: 14px;
+      color: #f5f5f5;
+    }
+
+    .citation-card pre {
+      background: #1f1f1f;
+      border-left: 4px solid #666;
+      color: #e6e6e6;
+      padding: 14px 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .citation-card code {
+      color: #e6e6e6;
+    }
 
   </style>
 </head>
@@ -208,45 +430,50 @@
     </h1>
 
     <div class="authors">
-      Zeyu Jiang<span class="sup">1</span>,
-      Lai Man Po<span class="sup">1</span>,
-      Xuyuan Xu<span class="sup">2</span>,
-      Yexin Wang<span class="sup">2†</span>,
-      Guoping Gong<span class="sup">2</span>,
-      Haoxuan Wu<span class="sup">1</span>,
-      Chenbo Yan<span class="sup">1</span>,
-      Kun Li<span class="sup">1</span>,
-      Yuyang Liu<span class="sup">1</span>
+      <a href="https://baojudezeze.github.io/" target="_blank">Zeyu Jiang</a><span class="sup">1</span>,
+      <a href="https://scholar.google.com/citations?user=H_0EvmkAAAAJ&hl=en" target="_blank">Lai Man Po</a><span class="sup">1*</span>,
+      <a href="https://scholar.google.com/citations?user=w0SMllMAAAAJ&hl=en" target="_blank">Xuyuan Xu</a><span class="sup">2</span>,
+      <a href="https://www.linkedin.com/in/yexin-wang-73304332" target="_blank">Yexin Wang</a><span class="sup">2†</span>,
+      <a href="https://openreview.net/profile?id=~Guoping_Gong3" target="_blank">Guoping Gong</a><span class="sup">2</span>,
+      <a href="https://loskiw.github.io/" target="_blank">Haoxuan Wu</a><span class="sup">1</span>,
+      <a href="https://cbyan1003.github.io/" target="_blank">Chenbo Yan</a><span class="sup">1</span>,
+      <a href="https://scholar.google.com/citations?user=cTKC_qQAAAAJ&hl=zh-CN" target="_blank">Kun Li</a><span class="sup">1</span>,
+      <a href="https://scholars.cityu.edu.hk/en/persons/yuyangliu5/" target="_blank">Yuyang Liu</a><span class="sup">1</span>
     </div>
 
+  
     <div class="affiliations">
       <span class="sup">1</span> City University of Hong Kong &nbsp;&nbsp;
-      <span class="sup">2</span> Magiclight.AI <br>
+      <span class="sup">2</span> <a href="https://magiclight.ai/" target="_blank">Magiclight.AI</a> &nbsp;&nbsp;
+      <span class="sup">*</span> Corresponding author  &nbsp;&nbsp;
       <span class="sup">†</span> Project Leader
     </div>
 
     <div class="badges">
-      <a href="https://github.com/cityuhkai/OrionEdit">
+      <a href="https://github.com/cityuhkai/OrionEdit" target="_blank" rel="noopener noreferrer">
         <img alt="Paper" src="https://img.shields.io/badge/Paper-Coming%20Soon-lightgrey">
       </a>
-      <a href="https://cityuhkai.github.io/OrionEdit/">
+      <a href="https://cityuhkai.github.io/OrionEdit/" target="_blank" rel="noopener noreferrer">
         <img alt="Project Page" src="https://img.shields.io/badge/Project-Page-blue">
       </a>
-      <a href="https://github.com/cityuhkai/OrionEdit">
+      <a href="https://github.com/cityuhkai/OrionEdit" target="_blank" rel="noopener noreferrer">
         <img alt="GitHub" src="https://img.shields.io/badge/GitHub-Code-black">
       </a>
-      <a href="https://huggingface.co/ZeyuJiang1/OrionEdit-qwen">
+      <a href="https://huggingface.co/ZeyuJiang1/OrionEdit-qwen" target="_blank" rel="noopener noreferrer">
         <img alt="HF Model" src="https://img.shields.io/badge/%F0%9F%A4%97-HF%20Model-yellow">
       </a>
-      <a href="https://huggingface.co/datasets/ZeyuJiang1/OrionEditBench">
+      <a href="https://huggingface.co/datasets/ZeyuJiang1/OrionEditBench" target="_blank" rel="noopener noreferrer">
         <img alt="HF Dataset" src="https://img.shields.io/badge/%F0%9F%A4%97-HF%20Dataset-yellow">
       </a>
+    </div>
+
+    <div class="acceptance">
+      🎉 Accepted by CVPR 2026
     </div>
 
     <div class="teaser">
       <img src="assets/teaser.png" alt="The teaser figure of OrionEdit.">
     </div>
-
 
     <h2>📝 Abstract</h2>
     <p>
@@ -274,9 +501,8 @@
       Built on standard diffusion backbones, OrionEdit enables zero-shot editing with multiple references and yields consistent gains over open-source baselines, rivaling proprietary models in fidelity and disentanglement.
     </p>
 
-
     <h2>🔍 Methodology</h2>
-    
+
     <div class="methodology">
       <img src="assets/methodology.png" alt="The methodology figure of OrionEdit.">
     </div>
@@ -347,6 +573,25 @@
       </div>
     </div>
 
+    <div class="method-bridge">
+      <div>
+        <h3>Why OrionEdit uses orthogonality differently</h3>
+        <p>
+          Rather than treating orthogonal LoRA branches as isolated concept containers, OrionEdit uses orthogonality as an <strong>information dispatcher</strong>.
+          Each branch update is closed inside its own subspace through the symmetric mapping <code>ΔW<sub>i</sub> = A<sub>i</sub>B<sub>i</sub>A<sub>i</sub><sup>⊤</sup></code>, which keeps branch-wise updates separated without introducing extra orthogonality regularization.
+        </p>
+        <p>
+          Figure on the right side provides the intuitive view of this design. The reference branches do not simply “store” different concepts; instead, they are routed through a <strong>reverse-causal</strong> pathway so that information propagates from <strong>reference → source → synthesis</strong>.
+          This makes feature transfer more disciplined, preserves source structure more reliably, and keeps the model compatible with zero-initialized adaptation.
+        </p>
+      </div>
+      <div>
+        <img src="assets/method_y.png" alt="information-flow regulation in OrionEdit.">
+        <div class="figure-caption">
+          We contrast classic orthogonal LoRA with OrionEdit, where orthogonality organizes branch-wise routing and enforces unidirectional propagation from reference to source to synthesis.
+        </div>
+      </div>
+    </div>
 
     <h2>🗂️ OrionEditBench</h2>
     <p>
@@ -366,38 +611,221 @@
     <p>
       The full training setup further includes diverse single-image data to preserve general generation ability.
       A preview of OrionEditBench is shown below. The released benchmark is available on
-      <a href="https://huggingface.co/datasets/ZeyuJiang1/OrionEditBench" target="_blank">Hugging Face</a>.
+      <a href="https://huggingface.co/datasets/ZeyuJiang1/OrionEditBench" target="_blank" rel="noopener noreferrer">Hugging Face</a>.
     </p>
 
     <div class="benchmark-preview">
       <img src="assets/OrionEditBench.png" alt="Preview of OrionEditBench.">
     </div>
 
+    <h2>📊 Results</h2>
+    <p class="results-intro">
+      We focus here on the <strong>visual results</strong> of OrionEdit. The examples below cover the main qualitative comparison in the paper,
+      followed by extended fusion, composition, style-transfer, virtual try-on, and additional cross-image editing cases.
+    </p>
 
+    <div class="result-block">
+      <h3>1. Main Qualitative Comparison</h3>
+      <p>
+        Figure bellow highlights the core <strong>subject appearance replacement</strong> setting. OrionEdit transfers identity more faithfully while preserving
+        the source composition and spatial structure. Compared with strong baselines, it more consistently avoids identity leakage,
+        feature blending, and geometry drift.
+      </p>
+      <div class="result-card">
+        <div class="result-figure" style="margin: 0;">
+          <img src="assets/result_main.png" alt="Main qualitative comparison on subject appearance replacement.">
+        </div>
+      </div>
+    </div>
 
-    <h2>🚀 Quick Start</h2>
-    <p class="note">Code and usage instructions will be updated soon.</p>
+    <div class="result-block">
+      <h3>2. Cross-image Fusion</h3>
+      <p>
+        The next gallery groups the <strong>fusion-oriented</strong> results. First figure bellow studies multi-image generation under semantically similar references,
+        a setting where concept entanglement is especially severe. Second figure extends this to source-conditioned multi-subject composition,
+        where viewpoint consistency and layout preservation become critical.
+      </p>
+      <p class="gallery-note">This gallery rotates automatically. Hover over it to pause.</p>
 
+      <div class="gallery" data-interval="6500">
+        <div class="gallery-stage">
+          <div class="gallery-slide active">
+            <h4>Multi-image Generation</h4>
+            <img src="assets/add_results_1.png" alt="Qualitative results on multi-image generation.">
+            <p>
+              OrionEdit produces more distinct and identity-consistent subjects when the references are semantically close, preserving fine-grained cues such as clothing, hairstyle, and overall appearance while reducing blending artifacts.
+            </p>
+          </div>
+
+          <div class="gallery-slide">
+            <h4>Multi-subject Composition</h4>
+            <img src="assets/add_results_2.png" alt="Qualitative results on multi-subject composition.">
+            <p>
+              Under source-scene constraints, OrionEdit keeps visual perspective and scene layout more stable across subjects, leading to smoother integration and more coherent multi-character compositions.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-controls">
+          <div class="gallery-buttons">
+            <button class="gallery-btn prev" type="button">← Prev</button>
+            <button class="gallery-btn next" type="button">Next →</button>
+          </div>
+          <div class="gallery-dots"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-block">
+      <h3>3. Style Alignment and Local Transfer</h3>
+      <p>
+        This gallery focuses on <strong>style transfer, virtual try-on, local appearance transfer, and broader editing cases</strong>.
+        First figure shows the direct comparison on style alignment and garment transfer, while second and third figures extend the coverage to more diverse subject replacement,
+        stylization, and try-on examples. Across these settings, OrionEdit better preserves source layout while merging reference attributes more naturally.
+      </p>
+      <p class="gallery-note">This gallery rotates automatically. Hover over it to pause.</p>
+
+      <div class="gallery" data-interval="7000">
+        <div class="gallery-stage">
+          <div class="gallery-slide active">
+            <h4>Style Transfer, Virtual Try-On, and Local Appearance Transfer</h4>
+            <img src="assets/add_results_3.png" alt="Style transfer, virtual try-on, and local appearance transfer.">
+            <p>
+              Compared with the baselines, OrionEdit reaches a better trade-off between source preservation and reference-guided change, reducing texture incompatibility and the pasted-looking overlays that often appear in difficult cross-style edits.
+            </p>
+          </div>
+
+          <div class="gallery-slide">
+            <h4>More Cross-image Editing Cases</h4>
+            <img src="assets/add_results_4.png" alt="More cross-image editing cases.">
+            <p>
+              These examples emphasize subject replacement and source-aware editing, showing that OrionEdit can preserve scene composition while reliably substituting identity and appearance cues from the reference inputs.
+            </p>
+          </div>
+
+          <div class="gallery-slide">
+            <h4>More Cross-image Editing Cases</h4>
+            <img src="assets/add_results_5.png" alt="More cross-image editing cases.">
+            <p>
+              This set further highlights style transfer and virtual try-on scenarios, including strong domain gaps between realistic, anime, and stylized references, where OrionEdit keeps edits cleaner and more coherent.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-controls">
+          <div class="gallery-buttons">
+            <button class="gallery-btn prev" type="button">← Prev</button>
+            <button class="gallery-btn next" type="button">Next →</button>
+          </div>
+          <div class="gallery-dots"></div>
+        </div>
+      </div>
+    </div>
+
+    
     <h2>🤗 Disclaimer</h2>
     <p>
       This repository is built upon
-      <a href="https://github.com/QwenLM/Qwen-Image">Qwen-Image</a>
+      <a href="https://github.com/QwenLM/Qwen-Image" target="_blank" rel="noopener noreferrer">Qwen-Image</a>
       and is released under the Apache 2.0 License. We thank
-      <a href="https://magiclight.ai">Magiclight.AI</a>
-      for their support.
-    </p>
-    <p>
+      <a href="https://magiclight.ai" target="_blank" rel="noopener noreferrer">Magiclight.AI</a>
+      for their support in dataset collection and training resources. 
       This project is intended for academic research and the AIGC community. Most images are AI-generated
       or from public datasets. For any concerns, please contact us; we will promptly review and remove
       inappropriate content.
     </p>
 
     <h2>⭐ Citation</h2>
-    <p>If OrionEdit inspires your research, please consider giving this repo a star and citing our work:</p>
-    <pre><code>@article{
-  title   = {OrionEdit},
-  note    = {Our paper has been accepted to CVPR 2026 main track. The official citation will be released upon publication.}
-}</code></pre>
-  </div>
+    <div class="citation-card">
+      <p>If OrionEdit inspires your research, please consider giving this repo a star and citing our work:</p>
+      <pre><code>@article{
+      title   = {OrionEdit},
+      note    = {Our paper has been accepted to CVPR 2026 main track. The official citation will be released upon publication.}
+    }</code></pre>
+    </div>
+
+  <script>
+    (function () {
+      const galleries = document.querySelectorAll('.gallery');
+
+      galleries.forEach((gallery) => {
+        const slides = Array.from(gallery.querySelectorAll('.gallery-slide'));
+        const dotsWrap = gallery.querySelector('.gallery-dots');
+        const prevBtn = gallery.querySelector('.prev');
+        const nextBtn = gallery.querySelector('.next');
+        const interval = Number(gallery.dataset.interval || 6000);
+        let current = 0;
+        let timer = null;
+
+        if (!slides.length) return;
+
+        const dots = slides.map((_, idx) => {
+          const dot = document.createElement('button');
+          dot.className = 'gallery-dot';
+          dot.type = 'button';
+          dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+          dot.addEventListener('click', () => {
+            show(idx);
+            restart();
+          });
+          dotsWrap.appendChild(dot);
+          return dot;
+        });
+
+        function show(index) {
+          current = (index + slides.length) % slides.length;
+          slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === current);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === current);
+          });
+        }
+
+        function next() {
+          show(current + 1);
+        }
+
+        function prev() {
+          show(current - 1);
+        }
+
+        function start() {
+          stop();
+          timer = window.setInterval(next, interval);
+        }
+
+        function stop() {
+          if (timer) {
+            window.clearInterval(timer);
+            timer = null;
+          }
+        }
+
+        function restart() {
+          stop();
+          start();
+        }
+
+        prevBtn.addEventListener('click', () => {
+          prev();
+          restart();
+        });
+
+        nextBtn.addEventListener('click', () => {
+          next();
+          restart();
+        });
+
+        gallery.addEventListener('mouseenter', stop);
+        gallery.addEventListener('mouseleave', start);
+        gallery.addEventListener('focusin', stop);
+        gallery.addEventListener('focusout', start);
+
+        show(0);
+        start();
+      });
+    })();
+  </script>
 </body>
 </html>
