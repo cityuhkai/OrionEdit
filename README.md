@@ -11,7 +11,7 @@
         <img alt="Project Page" src="https://img.shields.io/badge/Project-Page-blue">
     </a>
     <a href="https://github.com/cityuhkai/OrionEdit">
-        <img alt="Paper" src="https://img.shields.io/badge/Paper-Coming%20Soon-lightgrey">
+        <img alt="GitHub" src="https://img.shields.io/badge/GitHub-Code-black">
     </a>
     <a href="https://huggingface.co/">
         <img alt="Build" src="https://img.shields.io/badge/🤗-HF%20Model-yellow">
