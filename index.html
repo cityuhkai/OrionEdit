@@ -264,12 +264,10 @@
 
     <h2>🔍 Methodology</h2>
     
-    
     <div class="methodology">
       <img src="assets/methodology.png" alt="The methodology figure of OrionEdit.">
     </div>
 
-    <h2>🔍 Method Overview</h2>
     <p>
       OrionEdit is built on two complementary designs: <strong>branch-specific orthogonal subspaces</strong>
       for disentangling multiple visual streams, and a <strong>reverse-causal attention mask</strong>
@@ -336,6 +334,31 @@
       </div>
     </div>
 
+
+    <h2>🗂️ OrionEditBench</h2>
+    <p>
+      Existing datasets rarely follow the <strong>reference–source–synthesis</strong> format required for
+      cross-image editing. To address this gap, we build <strong>OrionEditBench</strong>, a benchmark designed
+      for systematic evaluation of reference-guided image editing.
+    </p>
+
+    <p>
+      OrionEditBench is constructed from curated synthetic pairs generated with Nano-Banana and GPT-4o,
+      together with partially public data sources. It covers three representative task families:
+      <strong>attribute transfer</strong>, <strong>fusion-based generation</strong>, and
+      <strong>style alignment</strong>, including cases such as subject replacement, virtual try-on,
+      multi-subject composition, and reference-guided stylization.
+    </p>
+
+    <p>
+      The full training setup further includes diverse single-image data to preserve general generation ability.
+      A preview of OrionEditBench is shown below. The released benchmark is available on
+      <a href="https://huggingface.co/datasets/ZeyuJiang1/OrionEditBench" target="_blank">Hugging Face</a>.
+    </p>
+
+    <div class="benchmark-preview">
+      <img src="assets/OrionEditBench.png" alt="Preview of OrionEditBench.">
+    </div>
 
 
 
