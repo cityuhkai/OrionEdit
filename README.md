@@ -42,13 +42,6 @@ OrionEdit is deployed on standard diffusion backbones and supports zero-shot mul
 
 ## 🚀 Quick Start
 
-Requirements and Installation
-First, install the necessary dependencies:
-
-
-## Inference
-
-
 
 ## 🗂️ OrionEditBench
 
