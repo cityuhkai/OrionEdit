@@ -28,6 +28,7 @@
 
 - **2026.3.22**: The repo has been released!
 - **2026.4.01**: We release a subset of the OrionEditBench metadata, including the AI-generated data for attribute transfer task!
+- **2026.4.06**: We release the inference code of OrionEdit-qwen model!
 
 
 
