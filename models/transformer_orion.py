@@ -1,5 +1,4 @@
-# DNS transformer: Qwen-Image edit backbone + staged attention (syn | ref | src) and decoupled late layers.
-# Aligns with Qwen-Image 2511 reference where the installed diffusers version supports it (AttentionMixin, parallel).
+# TODO: add documentation
 
 import functools
 import math
