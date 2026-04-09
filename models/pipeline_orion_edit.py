@@ -1,4 +1,16 @@
-# TODO: add documentation
+# This file is adapted from diffusers' pipeline_qwenimage_edit_plus.py,
+# based on diffusers version 0.36.0.dev0 and Qwen-image-edit.
+#
+# For research and educational purposes only. For any commercial use, please comply with the original licenses and copyright terms of both Qwen-Image and diffusers.
+# Copyright (c) Original Authors of diffusers and Qwen-image-edit. All rights reserved.
+#
+# Documentation:
+# This file is adapted and extended from the diffusers pipeline_qwenimage_edit_plus.py for use with Qwen-Image-Edit-2511.
+# It specializes the OrionEdit Pipeline to support multi-image reference, editing, and control inputs with segmented streams,
+# and implements customized logic for Qwen algorithm's image-text editing tasks.
+# Core dependencies and modules are derived from diffusers, including AutoencoderKLQwenImage, FlowMatchEulerDiscreteScheduler, and OrionEditTransformer2DModel.
+# For implementation details, and definitions of inputs/outputs, refer to the docstrings of the main methods and classes.
+# This file is intended for research and educational purposes only; for any commercial use, please comply with the original licenses of Qwen and diffusers.
 
 import inspect
 import math
