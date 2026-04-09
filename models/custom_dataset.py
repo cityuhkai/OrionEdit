@@ -1,3 +1,5 @@
+# Modified from the training script provided by diffusers FLUX.1 dev.
+
 import json
 import random
 
