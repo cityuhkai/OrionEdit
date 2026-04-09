@@ -1,4 +1,8 @@
-# TODO: add documentation
+# This file is modified from diffusers' transformer_qwenimage.py, based on diffusers version 0.36.0.dev0.
+# Qwen Image version: Qwen-image-edit-2511.
+#
+# For research and educational purposes only. For any commercial use, please comply with the original licenses and copyright terms of both Qwen-Image and diffusers.
+# Copyright (c) Original Authors of diffusers and Qwen-image-edit. All rights reserved.
 
 import functools
 import math
