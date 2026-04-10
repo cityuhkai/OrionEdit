@@ -16,7 +16,11 @@ pipeline = OrionEditPipeline.from_orion_pretrained(
 )
 
 source_image = "/path/to/image_to_be_edited"
-reference_image = "/path/to/reference_image"
+# Supports multiple references, best for 2. 
+reference_image = [
+    "/path/to/reference_image_1",
+    "/path/to/reference_image_2",
+]
 # fusion task:
 # reference_image = ["/path/to/reference_image_1", "/path/to/reference_image_2"]
 # keep source_image = "" for fusion task
