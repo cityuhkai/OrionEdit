@@ -19,6 +19,7 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Union
 import numpy as np
 import torch
 from huggingface_hub import hf_hub_download
+from PIL import Image
 from safetensors.torch import load_file as load_sft
 from transformers import Qwen2_5_VLForConditionalGeneration, Qwen2Tokenizer, Qwen2VLProcessor
 
@@ -190,6 +191,45 @@ def build_dns_seg_slices(
             f"editing expects packed_lengths [L_ref, L_src] (len==2); got {len(lengths)} stream(s)."
         )
     return build_image_stream_slices(L_syn, lengths[0], lengths[1], start_offset=start_offset)
+
+
+def _to_pil_rgb(img: PipelineImageInput) -> Image.Image:
+    if isinstance(img, Image.Image):
+        return img.convert("RGB")
+    if isinstance(img, str):
+        return Image.open(img).convert("RGB")
+    raise ValueError("Only PIL.Image or local file path inputs are supported for reference/source composition.")
+
+
+def _build_composited_reference_canvas(
+    refs: List[Image.Image], source: Optional[Image.Image]
+) -> Image.Image:
+    if len(refs) == 1:
+        return refs[0]
+
+    strip_w = sum(r.width for r in refs)
+    strip_h = max(r.height for r in refs)
+    strip = Image.new("RGB", (strip_w, strip_h), (0, 0, 0))
+    x = 0
+    for ref in refs:
+        strip.paste(ref, (x, 0))
+        x += ref.width
+
+    if source is not None:
+        canvas_w, canvas_h = source.size
+    else:
+        canvas_w, canvas_h = refs[0].size
+
+    scale = min(canvas_w / strip_w, canvas_h / strip_h)
+    new_w = max(1, int(round(strip_w * scale)))
+    new_h = max(1, int(round(strip_h * scale)))
+    resized_strip = strip.resize((new_w, new_h), Image.BICUBIC)
+
+    canvas = Image.new("RGB", (canvas_w, canvas_h), (0, 0, 0))
+    paste_x = (canvas_w - new_w) // 2
+    paste_y = (canvas_h - new_h) // 2
+    canvas.paste(resized_strip, (paste_x, paste_y))
+    return canvas
 
 
 class OrionEditPipeline(DiffusionPipeline, QwenImageLoraLoaderMixin):
@@ -612,10 +652,12 @@ class OrionEditPipeline(DiffusionPipeline, QwenImageLoraLoaderMixin):
         r"""
         Args:
             reference_image (`PipelineImageInput`):
-                Reference image(s). For **editing** (when `source_image` is set), pass exactly one. For **fusion**
-                (no `source_image`), pass one image or a list of reference images.
+                Reference image(s). Supports 1 to 3 references. When multiple references are provided, the pipeline
+                concatenates them left-to-right and composites them into a single reference canvas before encoding
+                only for editing mode (`source_image` provided). For fusion mode (`source_image` omitted), two
+                references are kept as independent condition images.
             source_image (`PipelineImageInput`, *optional*):
-                Source / target scene for editing. If omitted or ``None``, runs **fusion** (reference-only, no src stream).
+                Source / target scene for editing. At most one source image is supported.
         Examples:
         Returns:
         """
@@ -625,15 +667,16 @@ class OrionEditPipeline(DiffusionPipeline, QwenImageLoraLoaderMixin):
         refs = reference_image if isinstance(reference_image, list) else [reference_image]
         has_source = source_image is not None and (not isinstance(source_image, str) or source_image.strip() != "")
         if has_source:
-            if len(refs) != 1:
-                raise ValueError(
-                    "When `source_image` is provided (editing), `reference_image` must be a single image, not a list."
-                )
-            image = [refs[0], source_image]
+            if len(refs) < 1 or len(refs) > 3:
+                raise ValueError(f"Editing expects 1 to 3 `reference_image` inputs; got {len(refs)}.")
+            source_pil = _to_pil_rgb(source_image)
+            refs_pil = [_to_pil_rgb(r) for r in refs]
+            composed_ref = _build_composited_reference_canvas(refs_pil, source_pil)
+            image = [composed_ref, source_pil]
         else:
             if len(refs) != 2:
                 raise ValueError("Fusion requires exactly two `reference_image` inputs and empty `source_image`.")
-            image = refs
+            image = [_to_pil_rgb(r) for r in refs]
 
         image_size = image[-1].size if isinstance(image, list) else image.size
         calculated_width, calculated_height = calculate_dimensions(1024 * 1024, image_size[0] / image_size[1])
