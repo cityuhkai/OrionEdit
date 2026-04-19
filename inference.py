@@ -1,8 +1,8 @@
-import os
+##OrionEdit inference demo##
 
+import os
 import torch
 from PIL import Image
-
 from models.pipeline_orion_edit import OrionEditPipeline
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
