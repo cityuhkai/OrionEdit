@@ -47,7 +47,7 @@ OrionEdit is deployed on standard diffusion backbones and supports zero-shot mul
 
 ### Environment
 
-We recommend a CUDA GPU with **≥24 GB** VRAM for inference (the pipeline enables sequential CPU offload when a device is set). Install dependencies via Conda:
+We recommend a CUDA GPU with **≥40 GB** VRAM for inference (the pipeline enables sequential CPU offload when a device is set). Install dependencies via Conda:
 
 ```bash
 conda env create -f config/exvironment.yml
