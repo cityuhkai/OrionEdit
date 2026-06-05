@@ -30,6 +30,8 @@
 - **2026.4.01**: We release a subset of the OrionEditBench metadata, including the AI-generated data for attribute transfer task!
 - **2026.4.06**: We release the inference code of OrionEdit-qwen model!
 - **2026.4.19**: We release the training example of OrionEdit-qwen model!
+- **2026.6.3**: We update the checkpoint of OrionEdit-qwen!
+- **2026.6.5**: Some inference examples are released!
 
 
 ## 📖 Introduction
