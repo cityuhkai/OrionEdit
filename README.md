@@ -78,13 +78,14 @@ pipeline = OrionEditPipeline.from_orion_pretrained(
     torch_dtype=dtype,
     device=device,
 )
+pipeline = pipeline.to(dtype=torch.bfloat16)
 
 # --- Attribute transfer / editing (1–3 references + one source scene) ---
-reference_image = [Image.open("ref1.png").convert("RGB"), Image.open("ref2.png").convert("RGB")]
-source_image = Image.open("source.png").convert("RGB")
+reference_image = Image.open("example1-ref.png").convert("RGB")
+source_image = Image.open("example1-source.png").convert("RGB")
 
 image = pipeline(
-    prompt="Describe how the reference should alter the source scene.",
+    prompt = "replace the character in Figure 2 with the character in Figure 1.",
     reference_image=reference_image,
     source_image=source_image,
     num_inference_steps=30,
@@ -93,11 +94,79 @@ image = pipeline(
     guidance_scale=1.0,
 ).images[0]
 
-# --- Fusion (two references, no source) ---
-# reference_image = [Image.open("ref_a.png").convert("RGB"), Image.open("ref_b.png").convert("RGB")]
-# source_image = None
+image.save("example1-output.png")
+```
 
-image.save("output.png")
+**Multi-reference input (2–3 references):**
+
+```python
+from PIL import Image
+import torch
+from models.pipeline_orion_edit import OrionEditPipeline
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+dtype = torch.bfloat16 if device.type == "cuda" else torch.float32
+
+pipeline = OrionEditPipeline.from_orion_pretrained(
+    base_model="Qwen/Qwen-Image-Edit-2511",
+    orion_repo="ZeyuJiang1/OrionEdit-qwen",
+    torch_dtype=dtype,
+    device=device,
+)
+pipeline = pipeline.to(dtype=torch.bfloat16)
+
+# --- Attribute transfer / editing (1–3 references + one source scene) ---
+reference_image = [Image.open("example3-ref1.png").convert("RGB"), Image.open("example3-ref2.png").convert("RGB")]
+source_image = Image.open("example3-source.png").convert("RGB")
+
+image = pipeline(
+    prompt = "characters in Figure 1 walking on the sunset street in Figure 2, with their backs facing the camera, anime style.",
+    reference_image=reference_image,
+    source_image=source_image,
+    num_inference_steps=30,
+    true_cfg_scale=4.0,
+    negative_prompt=" ",
+    guidance_scale=1.0,
+).images[0]
+
+image.save("example3-output.png")
+```
+
+**Fusion (two references, no source):**
+
+```python
+from PIL import Image
+import torch
+from models.pipeline_orion_edit import OrionEditPipeline
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+dtype = torch.bfloat16 if device.type == "cuda" else torch.float32
+
+pipeline = OrionEditPipeline.from_orion_pretrained(
+    base_model="Qwen/Qwen-Image-Edit-2511",
+    orion_repo="ZeyuJiang1/OrionEdit-qwen",
+    torch_dtype=dtype,
+    device=device,
+)
+pipeline = pipeline.to(dtype=torch.bfloat16)
+
+# --- Fusion (two references, no source) ---
+reference_image = [Image.open("example4-ref1.png").convert("RGB"), Image.open("example4-ref2.png").convert("RGB")]
+source_image = None
+
+image = pipeline(
+    prompt = "photo of two men walking on the street, they talking with eacher other.",
+    reference_image=reference_image,
+    source_image=source_image,
+    num_inference_steps=30,
+    width=1024,
+    height=1024,
+    true_cfg_scale=4.0,
+    negative_prompt=" ",
+    guidance_scale=1.0,
+).images[0]
+
+image.save("example4-output.png")
 ```
 
 | Task | `reference_image` | `source_image` | Notes |

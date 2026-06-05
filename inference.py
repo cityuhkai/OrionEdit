@@ -34,7 +34,7 @@ source_image = Image.open(source_image).convert("RGB") if str(source_image).stri
 
 with torch.autocast(device_type=device.type, dtype=dtype, enabled=True):
     image = pipeline(
-        prompt="A cinematic illustration of a fox explorer discovering a glowing ancient observatory.",
+        prompt="Your/instruction/prompt",
         reference_image=reference_image,
         source_image=source_image,
         num_inference_steps=30,
