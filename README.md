@@ -4,8 +4,8 @@
 </h1>
 
 <p align="center">
-    <a href="https://github.com/cityuhkai/OrionEdit">
-        <img alt="Paper" src="https://img.shields.io/badge/Paper-Coming%20Soon-lightgrey">
+    <a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Jiang_OrionEdit_Bridging_Reference_and_Source_Images_for_Generalized_Cross-Image_Editing_CVPR_2026_paper.pdf">
+        <img alt="Paper" src="https://img.shields.io/badge/Paper-CVPR%202026-b31b1b">
     </a>
     <a href="https://cityuhkai.github.io/OrionEdit/">
         <img alt="Project Page" src="https://img.shields.io/badge/Project-Page-blue">
