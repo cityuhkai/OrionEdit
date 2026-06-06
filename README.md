@@ -259,7 +259,11 @@ This repository is built upon [Qwen-Image](https://github.com/QwenLM/Qwen-Image)
 If OrionEdit inspires your research 🤔, please consider giving this repo a ⭐ and citing our work:
 
 ```bibtex
-@article{
-> Our paper has been accepted to CVPR 2026 main track. 
-The official citation will be released upon publication.
+@inproceedings{jiang2026orionedit,
+  title={OrionEdit: Bridging Reference and Source Images for Generalized Cross-Image Editing},
+  author={Jiang, Zeyu and Po, Lai Man and Xu, Xuyuan and Wang, Yexin and Gong, Guoping and Wu, Haoxuan and Yan, Chenbo and Li, Kun and Liu, Yuyang},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={9127--9138},
+  year={2026}
 }
+```
